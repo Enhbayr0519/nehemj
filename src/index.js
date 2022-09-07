@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Invoice from "./components/nehemj/Invoice.js"
 import Contract from './components/contract/Contract';
+import Payment from './components/payment/Payment'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,7 @@ root.render(
       <Route path='/' element={<App />} />
       <Route path='/invoice' element={<Invoice />} />
       <Route path='/contract' element={<Contract />} />
-      <Route path='/payment' element={<Contract />} />
+      <Route path='/payment' element={<Payment />} />
     </Routes>
 
   </BrowserRouter>

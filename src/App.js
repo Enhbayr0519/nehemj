@@ -17,6 +17,9 @@ function App() {
         <button onClick={() => navigate("/contract")} className='w-full rounded-md border drop-shadow-xl p-2 bg-white mt-2'>
           Амжилт веб гэрээ
         </button>
+        <button onClick={() => navigate("/payment")} className='w-full rounded-md border drop-shadow-xl p-2 bg-white mt-2'>
+          Амжилт веб үнийн санал
+        </button>
       </div>
 
     </div>

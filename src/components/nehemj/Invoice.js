@@ -1,11 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Pdf from "react-to-pdf";
 import { IoIosRemove, IoMdDownload } from "react-icons/io"
 import { currency_list } from '../../utils/currencies';
 import tamga from "../../assets/Tamga/эйтай (1).png"
+import { useNavigate } from 'react-router-dom';
+import { url } from "../../utils/urls"
+import axios from "axios"
 
 
 function Invoice() {
+    const navigate = useNavigate()
+
+    const token = localStorage.getItem("token")
+    useEffect(() => {
+        if (token) {
+            const authenticate = async () => {
+                const { data } = await axios.get(`${url}/admin/auth`)
+                if (data.success) {
+                    return
+                } else {
+                    navigate("/login")
+                }
+            }
+            authenticate()
+        }
+        else {
+            navigate("/login");
+        }
+    }, [navigate, token]);
 
     const [invoiceCompanyName, setInvoiceCompanyName] = useState("Том-Амжилт")
     const [invoiceCompanyAddress, setInvoiceCompanyAddress] = useState("Сүхбаатар, 1-р хороо, J Hotel office, 804")
@@ -72,9 +94,11 @@ function Invoice() {
 
 
 
+
+
     return (
-        <div className='w-full h-screen gap-2 flex justify-between items-center p-4'>
-            <div className='w-2/6 bg-white h-full overflow-auto rounded-md drop-shadow-xl p-4 flex flex-col'>
+        <div className='w-full h-screen gap-2 flex md:flex-row flex-col md:justify-between  md:items-center item-start p-4'>
+            <div className='md:w-2/6 w-full bg-white  md:h-full h-[500px] overflow-auto rounded-md drop-shadow-xl p-4 flex flex-col'>
                 <div className='mt-4'>
                     <label className='w-full p-2 rounded-md border bg-amber-300' >Нэхэмжлэгч</label>
                     <input className='w-full border p-2 rounded-md mt-2' placeholder='invoiceCompanyName' value={invoiceCompanyName} onChange={(e) => setInvoiceCompanyName(e.target.value)} />
@@ -143,12 +167,34 @@ function Invoice() {
                         }
                     </div>
                 }
+                <Pdf
+                    targetRef={ref}
+                    filename={`${PayCompanyName}_нэхэмжлэх.pdf`}
+                    options={options}
+                    x={-0.1}
+                    y={0}
+                    scale={1}
+                >
+                    {({ toPdf }) => (
+                        <button
+                            className="w-full bg-red-600 border mt-2 border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-red-500 flex md:hidden"
+                            onClick={toPdf}
+                        >
+                            <IoMdDownload size={30} />
+                        </button>
+                    )}
+                </Pdf>
             </div>
-            <div className='w-4/6 bg-white h-full rounded-md drop-shadow-xl flex justify-center items-center'>
-                <div className='absolute top-0 right-0'>
+            <div className='md:w-4/6 w-full bg-white h-[1000px] md:h-full rounded-md drop-shadow-xl flex justify-center items-center'>
+                <div className="absolute top-2 left-2">
+                    <button onClick={() => navigate("/")} className="border p-2 rounded-md hover:underline">
+                        Буцах
+                    </button>
+                </div>
+                <div className='absolute top-0 right-0 hidden md:flex'>
                     <Pdf
                         targetRef={ref}
-                        filename="нэхэмжлэх.pdf"
+                        filename={`${PayCompanyName}_нэхэмжлэх.pdf`}
                         options={options}
                         x={-0.1}
                         y={0}

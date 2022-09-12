@@ -82,7 +82,7 @@ app.use(AdminRouter);
 // app.all("/*", (req, res, next) => {
 //     res.send({ success: true, message: "Error" })
 // });
-console.log(path.join(__dirname, '../build/index.html'))
+// console.log(path.join(__dirname, '../build/index.html'))
 
 app.use(express.static(path.join(__dirname, './build')));
 

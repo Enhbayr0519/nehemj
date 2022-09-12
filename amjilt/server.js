@@ -8,7 +8,7 @@ const cors = require("cors");
 const multer = require("multer");
 
 
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3000;
 
 const AdminRouter = require(__dirname + "/routes/admin.js")
 

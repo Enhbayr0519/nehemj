@@ -90,7 +90,7 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
 
-mongoose.connect("mongodb://127.0.0.1:27017/amjilt", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("Connected to database")
     app.listen(PORT, () => {
         console.log(`App started on port http://localhost:${PORT}`);

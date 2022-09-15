@@ -8,6 +8,9 @@ import { url } from "../../utils/urls"
 import axios from "axios"
 import { IoRemove } from "react-icons/io5";
 
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
+
 function Payment() {
     const navigate = useNavigate()
 
@@ -137,8 +140,10 @@ function Payment() {
 
 
     return (
-        <div className="w-full h-screen gap-2 flex justify-between items-center p-4">
-            <div className="w-2/6 bg-white h-full overflow-auto rounded-md drop-shadow-xl p-4 flex flex-col">
+
+
+        <div className='w-full md:h-screen  gap-2 flex md:flex-row flex-col md:justify-between  md:items-center item-start p-4'>
+            <div className='md:w-2/6 w-full bg-white md:h-screen  overflow-auto rounded-md drop-shadow-xl p-4 flex flex-col'>
                 <div className="mt-4">
                     <input
                         className="w-full border p-2 rounded-md mt-2"
@@ -230,6 +235,23 @@ function Payment() {
                     >
                         нэмэх
                     </button>
+                    <Pdf
+                        targetRef={ref}
+                        filename={`${companyName}_үнийн_санал.pdf`}
+                        options={options}
+                        x={0}
+                        y={0}
+                        scale={.9}
+                    >
+                        {({ toPdf }) => (
+                            <button
+                                className="w-full bg-red-600 border mt-2 border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-red-500"
+                                onClick={toPdf}
+                            >
+                                <IoMdDownload size={30} />
+                            </button>
+                        )}
+                    </Pdf>
                 </div>
                 {List.length !== 0 && (
                     <div className="mt-4 border border-black p-2 rounded-md">
@@ -254,7 +276,7 @@ function Payment() {
                     </div>
                 )}
             </div>
-            <div className="w-4/6 bg-white h-full rounded-md drop-shadow-xl flex justify-center items-center overflow-auto">
+            <div className="'md:w-4/6 w-full bg-white  h-auto rounded-md drop-shadow-xl flex justify-center items-center">
                 <div className="absolute top-2 left-2">
                     <button onClick={() => navigate("/")} className="border p-2 rounded-md hover:underline">
                         Буцах
@@ -263,11 +285,11 @@ function Payment() {
                 <div className="absolute top-0 right-0">
                     <Pdf
                         targetRef={ref}
-                        filename="үнийн санал.pdf"
+                        filename={`${companyName}_үнийн_санал.pdf`}
                         options={options}
-                        x={-0.1}
+                        x={0}
                         y={0}
-                        scale={1}
+                        scale={.9}
                     >
                         {({ toPdf }) => (
                             <button
@@ -281,14 +303,14 @@ function Payment() {
                 </div>
                 <div
                     ref={ref}
-                    className="w-[595px] bg-white h-[842px] drop-shadow-2xl mx-auto py-[30px] px-[30px] "
+                    className="w-[595px] bg-white h-[842px] drop-shadow-2xl mx-auto py-[20px] px-[20px]"
                 >
-                    <img src={logo} className="w-[150px] flex mx-auto" />
-                    <div className="w-full bg-white flex justify-between items-start mt-2 flex-col justify-center mt-5">
+                    <img src={logo} className="w-[100px] flex mx-auto" />
+                    <div className="w-full bg-white flex justify-between items-start mt-2 flex-col justify-center mt-2">
                         <h2 className="w-full text-center font-bold">
                             {option ? option : "Вэб сайт"} хийх
                         </h2>
-                        <h1 className="w-full text-[15px] text-center uppercase font-bold">
+                        <h1 className="w-full text-[14px] text-center uppercase font-bold">
                             Үнийн санал
                         </h1>
                     </div>
@@ -329,20 +351,20 @@ function Payment() {
                                 </tr>
                             </tbody>
                         </table>
-                        <table className="border w-full mx-auto mt-6">
+                        <table className="border w-full mx-auto mt-2">
                             <thead>
                                 <tr>
                                     <th className="border border-black w-[10px]">
-                                        <p className="text-[12px] ">Төрөл</p>
-                                    </th>
-                                    <th className="border border-black w-[10px">
-                                        <p className="text-[12px]">Үндсэн үнэ</p>
-                                    </th>
-                                    <th className="border border-black w-[10px">
-                                        <p className="text-[12px]">Хөнгөлсөн үнэ</p>
+                                        <p className="text-[11px] ">Төрөл</p>
                                     </th>
                                     <th className="border border-black">
-                                        <p className="text-[12px]">Тайлбар</p>
+                                        <p className="text-[11px]">Үндсэн үнэ</p>
+                                    </th>
+                                    <th className="border border-black w-[10px">
+                                        <p className="text-[11px]">Хөнгөлсөн үнэ</p>
+                                    </th>
+                                    <th className="border border-black">
+                                        <p className="text-[11px]">Тайлбар</p>
                                     </th>
                                 </tr>
                             </thead>
@@ -351,26 +373,26 @@ function Payment() {
                                     List?.map((item, index) => (
                                         <tr key={index}>
                                             <td className="border border-black">
-                                                <p className="text-[12px] text-center">
+                                                <p className="text-[11px] text-center">
                                                     {item.typeName}
                                                 </p>
-                                                <p className="text-[12px] text-center">
+                                                <p className="text-[11px] text-center">
                                                     {item.tool ? `/${item.tool}/` : ""}
                                                 </p>
                                             </td>
                                             <td className="border border-black">
-                                                <p className="text-[12px] text-center">
+                                                <p className="text-[11px] text-center">
                                                     {numberWithCommas(item.Price)}
                                                 </p>
                                             </td>
                                             <td className="border border-black">
-                                                <p className="text-[12px] text-center">
-                                                    {item.discount ? numberWithCommas(item.Price - (item.Price * (item.discount / 100))) : numberWithCommas(item.Price)}
+                                                <p className="text-[11px] text-center">
+                                                    {numberWithCommas(item.discount)}
                                                 </p>
                                             </td>
                                             <td className="border border-black">
                                                 <div className="text-[12px] text-left flex flex-col items-start">
-                                                    <div className="text-[12px] text-center flex flex-col items-start" >
+                                                    <div className="text-[11px] text-center flex flex-col items-start" >
                                                         {item.explenation.map((item, index) => (
                                                             <p key={index} className="text-left break-all">
                                                                 {item.name && `- ${item.name}`}
@@ -435,6 +457,9 @@ function Payment() {
                 </div>
             </div>
         </div>
+
+
+
     );
 }
 

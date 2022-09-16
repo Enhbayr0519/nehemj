@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { url } from "../../utils/urls"
 import axios from "axios"
 import { IoRemove } from "react-icons/io5";
+import { AiFillEdit } from "react-icons/ai";
 
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
@@ -87,6 +88,8 @@ function Payment() {
     const [date, setDate] = useState("");
     const [discount, setDiscount] = useState("")
     const [explenationName, setExplenationName] = useState("")
+    const [cacheItem, setCacheItem] = useState(null)
+    const [edit, setEdit] = useState(false)
 
     const addToExplenation = () => {
         let obj = {
@@ -135,6 +138,22 @@ function Payment() {
 
     function numberWithCommas(x) {
         return x?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const setUpEdit = (item) => {
+        const savedData = item
+        removetypeName(item)
+        setTypeName(savedData.typeName)
+        setTool(savedData.tool)
+        setPrice(savedData.Price)
+        setDiscount(savedData.discount)
+        setExplenation(savedData.explenation)
+        setEdit(true)
+    };
+
+    const applyEdit = () => {
+        addtypeNameToList()
+        setEdit(false)
     }
 
 
@@ -225,16 +244,29 @@ function Payment() {
                         explenation?.map((item, index) => (
                             <div key={index} className="w-full border rounded-md  mt-2 p-2 justify-between items-center flex">
                                 <h1 className="w-48 overflow-auto"> {item.name}</h1>
-                                <button onClick={() => removeExplanetion(item)}><IoRemove /></button>
+                                <div className="w-48 flex gap-2 justify-center items-center">
+                                    <button onClick={() => removeExplanetion(item)}><IoRemove /></button>
+                                </div>
                             </div>
                         ))
                     }
-                    <button
-                        className="w-full border p-2 rounded-md mt-2 uppercase hover:bg-green-300"
-                        onClick={() => addtypeNameToList()}
-                    >
-                        нэмэх
-                    </button>
+                    {
+                        edit ?
+                            <button
+                                className="w-full border p-2 rounded-md mt-2 uppercase hover:bg-green-300"
+                                onClick={() => applyEdit()}
+                            >
+                                засах
+                            </button>
+                            :
+                            <button
+                                className="w-full border p-2 rounded-md mt-2 uppercase hover:bg-green-300"
+                                onClick={() => addtypeNameToList()}
+                            >
+                                нэмэх
+                            </button>
+                    }
+
                     <Pdf
                         targetRef={ref}
                         filename={`${companyName}_үнийн_санал.pdf`}
@@ -263,7 +295,10 @@ function Payment() {
                                 <div className="gap-2 flex">
                                     <h1>{item.typeName}</h1>
                                 </div>
-                                <div>
+                                <div className="flex w-48 justify-center items-center">
+                                    <button
+                                        className="hover:bg-yellow-400 hover:text-white rounded-md h-10 w-10 flex justify-center items-center"
+                                        onClick={() => setUpEdit(item)}><AiFillEdit /></button>
                                     <button
                                         className="hover:bg-red-400 hover:text-white rounded-md h-10 w-10 flex justify-center items-center"
                                         onClick={() => removetypeName(item)}

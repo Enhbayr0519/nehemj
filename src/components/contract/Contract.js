@@ -27,22 +27,22 @@ function Contract() {
     const [copy, setCopy] = useState("")
 
     const token = localStorage.getItem("token")
-    useEffect(() => {
-        if (token) {
-            const authenticate = async () => {
-                const { data } = await axios.get(`${url}/admin/auth`)
-                if (data.success) {
-                    return
-                } else {
-                    navigate("/login")
-                }
-            }
-            authenticate()
-        }
-        else {
-            navigate("/login");
-        }
-    }, [navigate, token]);
+    // useEffect(() => {
+    //     if (token) {
+    //         const authenticate = async () => {
+    //             const { data } = await axios.get(`${url}/admin/auth`)
+    //             if (data.success) {
+    //                 return
+    //             } else {
+    //                 navigate("/login")
+    //             }
+    //         }
+    //         authenticate()
+    //     }
+    //     else {
+    //         navigate("/login");
+    //     }
+    // }, [navigate, token]);
 
     const arr = x => Array.from(x);
     const num = x => Number(x) || 0;

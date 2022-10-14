@@ -8,29 +8,29 @@ import tamga from "../../assets/Tamga/эйтай (1).png"
 import { useNavigate } from 'react-router-dom';
 import { url } from "../../utils/urls"
 import axios from "axios"
-
+import {auth} from '../../App'
 
 function Contract() {
 
     const navigate = useNavigate()
-
+  const user=auth.currentUser
     const token = localStorage.getItem("token")
     useEffect(() => {
-        if (token) {
-            const authenticate = async () => {
-                const { data } = await axios.get(`${url}/admin/auth`)
-                if (data.success) {
-                    return
-                } else {
-                    navigate("/login")
-                }
-            }
-            authenticate()
+        if (user) {
+            // const authenticate = async () => {
+            //     const { data } = await axios.get(`${url}/admin/auth`)
+            //     if (data.success) {
+            //         return
+            //     } else {
+            //         navigate("/login")
+            //     }
+            // }
+            // authenticate()
         }
         else {
             navigate("/login");
         }
-    }, [navigate, token]);
+    }, [navigate]);
 
     const arr = x => Array.from(x);
     const num = x => Number(x) || 0;

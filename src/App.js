@@ -8,15 +8,24 @@ import { url } from "./utils/urls";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyB8YZn4yBBLfHbOuOJJpxzmSdTsnr0w2Fc",
+//   authDomain: "inifnitexox.firebaseapp.com",
+//   projectId: "inifnitexox",
+//   storageBucket: "inifnitexox.appspot.com",
+//   messagingSenderId: "880014186386",
+//   appId: "1:880014186386:web:740cb21ec6b5c0846c534b",
+//   measurementId: "G-PLRBB3QH5P",
+// };
 const firebaseConfig = {
-  apiKey: "AIzaSyB8YZn4yBBLfHbOuOJJpxzmSdTsnr0w2Fc",
-  authDomain: "inifnitexox.firebaseapp.com",
-  projectId: "inifnitexox",
-  storageBucket: "inifnitexox.appspot.com",
-  messagingSenderId: "880014186386",
-  appId: "1:880014186386:web:740cb21ec6b5c0846c534b",
-  measurementId: "G-PLRBB3QH5P",
+  apiKey: "AIzaSyDpiusYSHtW51TN9iog8ziEZuEgDOORQ40",
+  authDomain: "nehemjlel-e5fc9.firebaseapp.com",
+  projectId: "nehemjlel-e5fc9",
+  storageBucket: "nehemjlel-e5fc9.appspot.com",
+  messagingSenderId: "1094300223796",
+  appId: "1:1094300223796:web:e06ce48c3b86e2323bfd61"
 };
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 

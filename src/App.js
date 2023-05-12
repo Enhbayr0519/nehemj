@@ -18,13 +18,13 @@ import { getAuth } from "firebase/auth";
 //   measurementId: "G-PLRBB3QH5P",
 // };
 const firebaseConfig = {
-  apiKey: "AIzaSyDpiusYSHtW51TN9iog8ziEZuEgDOORQ40",
-  authDomain: "nehemjlel-e5fc9.firebaseapp.com",
-  projectId: "nehemjlel-e5fc9",
-  storageBucket: "nehemjlel-e5fc9.appspot.com",
-  messagingSenderId: "1094300223796",
-  appId: "1:1094300223796:web:e06ce48c3b86e2323bfd61"
-};
+  apiKey: "AIzaSyA9DnAeuJ1xsMFPnQaT5-wY3j2Ij7PlL28",
+  authDomain: "nehemj2.firebaseapp.com",
+  projectId: "nehemj2",
+  storageBucket: "nehemj2.appspot.com",
+  messagingSenderId: "349686181228",
+  appId: "1:349686181228:web:2bc7cbed40e09832f01749"
+};  
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

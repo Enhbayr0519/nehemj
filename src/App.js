@@ -2,8 +2,8 @@ import "./App.css";
 import Image from "../src/assets/amjilt.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-import axios from "axios";
-import { url } from "./utils/urls";
+// import axios from "axios";
+// import { url } from "./utils/urls";
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -34,7 +34,7 @@ export const auth = getAuth(app);
 function App() {
   
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   const user = auth.currentUser;
   useEffect(() => {
     if (user) {

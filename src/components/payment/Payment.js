@@ -481,7 +481,7 @@ function Payment() {
 								<img src={tamga} className="w-24 h-24 rotate-[-8deg] ml-7" />
 							</div>
 							<div className="flex">
-								<h1 className="text-[12px]">Үнийн санал гаргасан:.................../С. Бүжинханд/</h1>
+								<h1 className="text-[12px]">Үнийн санал гаргасан:.................../Э. Анударь/</h1>
 							</div>
 						</div>
 					</div>

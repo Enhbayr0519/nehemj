@@ -492,10 +492,10 @@ function Invoice() {
 							</h1>
 							<h1 className="text-left text-[12px] mt-2 sm:hidden">Дарга__________________ / ___________________ /</h1>
 							<h1 className="text-left  text-[12px] mt-2 hidden sm:block">
-								Нэхэмжлэл бичсэн_________________________ / С. Бүжинханд /
+								Нэхэмжлэл бичсэн_________________________ / Э. Анударь /
 							</h1>
 							<h1 className="text-left  text-[12px] mt-2 sm:hidden whitespace-nowrap">
-								Нэхэмжлэл бичсэн____С. Бүжинханд____ /
+								Нэхэмжлэл бичсэн____Э. Анударь____ /
 							</h1>
 							<h1 className="text-left  text-[12px] mt-2 hidden sm:block">
 								Нэхэмжлэл хүлээн авсан____________________ / ___________________ /
